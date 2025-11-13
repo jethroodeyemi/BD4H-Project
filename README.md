@@ -16,7 +16,11 @@ Train Patient-Specific Models: python 2_make_models_perpat.py
 
 Ensemble Creation
 Create all_mixed.dat: cat train.dat dev.dat test.dat > all_mixed.dat
-Generate Predictions on Dev Set: python inference_poolmodels.py
+Generate Predictions on Dev Set: python 3_inference_poolmodels.py
 Run the Ensemble Growing Algorithm: python grow_ensemble_perrone.py 0 | tee logs/grow_ensemble.log
 Create Ensemble List: tail -n1 logs/grow_ensemble.log > new_ensemble.py && sed "s/ /\n/g" new_ensemble.py | sed 's/[^0-9]*//g' | sed -r '/^\s*$/d' > new_ensemble.lst
 
+Generate Final Predictions on the Test Set
+Generate Full Model Predictions: 4_1_python inference_fullmodel.py
+Generate Predictions for Each Ensemble Model: 4_2_python inference_ensmodels.py
+Combine Ensemble Predictions: python 4_3_inference_ensemble.py
