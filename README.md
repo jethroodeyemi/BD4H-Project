@@ -24,3 +24,10 @@ Generate Final Predictions on the Test Set
 Generate Full Model Predictions: 4_1_python inference_fullmodel.py
 Generate Predictions for Each Ensemble Model: 4_2_python inference_ensmodels.py
 Combine Ensemble Predictions: python 4_3_inference_ensemble.py
+
+Calculate Metrics and Verify Hypotheses
+Hypothesis 1 (Prediction Accuracy - Table 4): python calc_auroc.py
+Hypothesis 2 (Privacy - Figure 2): Attack on Full Model: python membership_fullmodel_epsilon_1k.py 0 > full_model_leakage.txt
+                        Attack on Ensemble Model: python membership_ensemble_epsilon_alltrain_1k.py 0 > ensemble_leakage.txt
+                        python plot_leakage.py
+Accuracy/Privacy Trade-off (Figure 3): python calc_auroc_laplace_all.py 0 > accuracy_loss_data.txt && plot_accuracy_loss.py
