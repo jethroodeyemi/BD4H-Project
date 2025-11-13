@@ -1,1 +1,10 @@
 .venv/
+
+# Large data files
+sepsisexp_timeseries_partition-A.tsv
+sepsisexp_timeseries_partition-B.tsv
+sepsisexp_timeseries_partition-C.tsv
+sepsisexp_timeseries_partition-D.tsv
+train.dat
+test.dat
+dev.dat
