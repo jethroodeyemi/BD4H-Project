@@ -32,14 +32,16 @@ class TimeseriesNumPy(object):
     def load_series(self, path, num_features):
         stepsl = []
         targetsl = []
+        
         with open(path, 'r', encoding="utf8") as f:
             for line in f:
+                if not line.strip(): continue
                 healthdata = line.split()
+                try: float(healthdata[0]) 
+                except ValueError: continue 
                 values = [float(value) for value in healthdata[4:4+num_features]]
                 stepsl.append(values)
                 targetsl.append(float(healthdata[2]))
-
         steps = numpy.array(stepsl, dtype=float)
         targets = numpy.array(targetsl, dtype=float)
         return [steps, targets]
-
