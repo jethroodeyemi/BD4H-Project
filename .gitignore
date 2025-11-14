@@ -2,6 +2,7 @@
 __pycache__
 logs/
 models/
+data/
 
 # Additional files from 
 README
