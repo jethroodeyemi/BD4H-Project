@@ -46,7 +46,7 @@ def process_patient(patient_id):
     test_path = os.path.join(data_dir, "test.dat")
     generated_path = os.path.join(data_dir, "generated.dat")
     
-    test_df = pd.read_csv(test_path, sep='\t', header=None)
+    test_df = pd.read_csv(test_path, sep='\t', header=None, low_memory=False)
     generated_df = pd.read_csv(generated_path, sep='\t', header=None)
     
     label_pred_df = pd.concat([test_df.iloc[:, :4], generated_df], axis=1)
