@@ -2,6 +2,7 @@ import os
 import shutil
 import subprocess
 import pandas as pd
+import sys
 
 def process_patient(patient_id):
     i = patient_id
@@ -18,12 +19,12 @@ def process_patient(patient_id):
         os.remove(dev_symlink)
     os.symlink(os.path.abspath("dev.dat"), dev_symlink)
 
-    train_df = pd.read_csv("train.dat", sep='\t', header=None)
+    train_df = pd.read_csv("train.dat", sep='\t', header=None, low_memory=False)
     patient_train_df = train_df[train_df[0] == i]
     patient_train_df.to_csv(os.path.join(data_dir, "train.dat"), sep='\t', index=False, header=False)
 
     train_command = [
-        "python", "main_ts.py",
+        sys.executable, "main_ts.py",
         "--data", data_dir,
         "--save", model_path,
         "--cuda",
@@ -34,7 +35,7 @@ def process_patient(patient_id):
         subprocess.run(train_command, stdout=log_file, stderr=subprocess.STDOUT, check=True, text=True)
 
     predict_command = [
-        "python", "predict_ts.py",
+        sys.executable, "predict_ts.py",
         "--data", data_dir,
         "--checkpoint", model_path,
         "--cuda",
