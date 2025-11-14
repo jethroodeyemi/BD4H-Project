@@ -151,7 +151,7 @@ def train():
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), args.clip)
         for p in model.parameters():
-            p.data.add_(-lr, p.grad.data)
+            p.data.add_(p.grad.data, alpha=-lr)
         total_loss += loss.item()
         if batch % args.log_interval == 0 and batch > 0:
             cur_loss = total_loss / args.log_interval
