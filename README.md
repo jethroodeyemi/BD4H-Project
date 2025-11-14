@@ -29,9 +29,13 @@ python 1_make_data.py
 
 ### 2. Model Training
 
-Train the full model:
+Train the full model (bash):
 ```bash
 python main_ts.py --data . --save models/model_all_mixed.pt --cuda --epochs 200 2>&1 | tee logs/training_all_mixed.log
+```
+Train the full model (powershell):
+```powershell
+python main_ts.py --data . --save models/model_all_mixed.pt --cuda --epochs 200 *>&1 | Tee-Object -FilePath logs\training_all_mixed.log
 ```
 
 Train patient-specific models:
