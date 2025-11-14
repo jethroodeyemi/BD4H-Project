@@ -1,4 +1,11 @@
 .venv/
+__pycache__
+logs/
+models/
+
+# Additional files from 
+README
+SepsisExp.tar.gz
 
 # Large data files
 sepsisexp_timeseries_partition-A.tsv
@@ -9,3 +16,8 @@ train.dat
 test.dat
 dev.dat
 all_mixed.dat
+dev_ids.dat
+dev_ids_s0.dat
+test_ids.dat
+test_ds.dat
+test_ids_s0.dat
